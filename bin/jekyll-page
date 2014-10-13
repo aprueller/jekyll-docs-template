@@ -2,6 +2,7 @@
 
 require 'date'
 require 'optparse'
+require 'pathname'
 
 options = {
     # Expects to be in the bin/ sub-directory by default
@@ -34,6 +35,9 @@ filename = ARGV[2]
 BASE_DIR = File.expand_path(options[:path])
 POSTS_DIR = "#{BASE_DIR}/_posts"
 PAGES_DIR = "#{BASE_DIR}/_pages"
+PostsDirPathname = Pathname.new "#{POSTS_DIR}"
+PagesDirPathname = Pathname.new "#{PAGES_DIR}"
+POSTS_DIR_RELATIVE = PostsDirPathname.relative_path_from PagesDirPathname
 
 # Ensure the _posts directory exists (we are in the correct directory)
 if not Dir.exists?(POSTS_DIR)
@@ -47,14 +51,15 @@ if not Dir.exists?(PAGES_DIR)
 end
 
 if options[:link]
+    # Relink all exsitng pages in the posts directory
     Dir.foreach(POSTS_DIR) do |name|
         next if name[0] == '.'
         nodate = name[/\d{4}-\d{2}-\d{2}-(?<rest>.*)/, 'rest']
         if File.symlink?("#{PAGES_DIR}/#{nodate}")
             File.delete("#{PAGES_DIR}/#{nodate}")
         end
-        abspath = File.absolute_path("#{POSTS_DIR}/#{name}")
-        File.symlink(abspath, "#{PAGES_DIR}/#{nodate}")
+        relpath = File.path("#{POSTS_DIR_RELATIVE}/#{name}")
+        File.symlink(relpath, "#{PAGES_DIR}/#{nodate}")
     end
 end
 
@@ -97,7 +102,9 @@ File.open(filepath, 'w') do |file|
     file.puts content
 end
 
-File.symlink(File.absolute_path(filepath), symlink)
+symlinkFilepath = "#{POSTS_DIR_RELATIVE}/#{today}-#{filename}.md"
+
+File.symlink(File.path(symlinkFilepath), symlink)
 
 if options[:edit]
     if not ENV['EDITOR']
