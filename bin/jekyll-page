@@ -61,6 +61,13 @@ if options[:link]
         relpath = File.path("#{POSTS_DIR_RELATIVE}/#{name}")
         File.symlink(relpath, "#{PAGES_DIR}/#{nodate}")
     end
+    # remove all orphaned symlinks from pages directory
+    Dir.foreach(PAGES_DIR) do |name|
+      next if name[0] == '.'
+      if !File.exists?("#{PAGES_DIR}/#{name}")
+        File.delete("#{PAGES_DIR}/#{name}")
+      end
+    end
 end
 
 if not title or not category
