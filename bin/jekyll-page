@@ -13,10 +13,10 @@ parser = OptionParser.new do |opt|
     opt.banner = 'usage: jekyll-page TITLE CATEGORY [FILENAME] [OPTIONS]'
     opt.separator ''
     opt.separator 'Options'
-    opt.on('-e', '--edit', 'Edit the page') do |edit|
+    opt.on('-e', '--edit', 'Edit the page') do |_|
         options[:edit] = true
     end
-    opt.on('-l', '--link', 'Relink pages') do |link|
+    opt.on('-l', '--link', 'Relink pages') do |_|
         options[:link] = true
     end
     opt.on('-p PATH', '--path PATH', String, 'Path to project root') do |path|
@@ -40,14 +40,14 @@ PAGES_DIR_PATHNAME = Pathname.new "#{PAGES_DIR}"
 POSTS_DIR_RELATIVE = POSTS_DIR_PATHNAME.relative_path_from PAGES_DIR_PATHNAME
 
 # Ensure the _posts directory exists (we are in the cixorrect directory)
-if not Dir.exists?(POSTS_DIR)
-    puts "#{POSTS_DIR} directory does not exists"
-    exit
+unless Dir.exists?(POSTS_DIR)
+  puts "#{POSTS_DIR} directory does not exists"
+  exit
 end
 
 # Create _pages directory if it doesn't exist
-if not Dir.exists?(PAGES_DIR)
-    Dir.mkdir(PAGES_DIR)
+unless Dir.exists?(PAGES_DIR)
+  Dir.mkdir(PAGES_DIR)
 end
 
 if options[:link]
@@ -64,7 +64,7 @@ if options[:link]
     # remove all orphaned symlinks from pages directory
     Dir.foreach(PAGES_DIR) do |name|
       next if name[0] == '.'
-      if !File.exists?("#{PAGES_DIR}/#{name}")
+      unless File.exists?("#{PAGES_DIR}/#{name}")
         File.delete("#{PAGES_DIR}/#{name}")
       end
     end
@@ -73,18 +73,18 @@ end
 if not title or not category
     # This flag can be used by itself, exit silently if no arguments
     # are defined
-    if not options[:link]
-        puts parser
+    unless options[:link]
+      puts parser
     end
     exit
 end
 
-if not filename
-    filename = title.downcase.gsub(/[^a-z0-9\s]/, '').gsub(/\s+/, '-')
+unless filename
+  filename = title.downcase.gsub(/[^a-z0-9\s]/, '').gsub(/\s+/, '-')
 end
 
-today=Date.today().strftime('%F')
-now=DateTime.now().strftime('%F %T')
+today=Date.today.strftime('%F')
+now=DateTime.now.strftime('%F %T')
 
 filepath = "#{POSTS_DIR}/#{today}-#{filename}.md"
 symlink = "#{PAGES_DIR}/#{filename}.md"
@@ -109,14 +109,14 @@ File.open(filepath, 'w') do |file|
     file.puts content
 end
 
-symlinkFilepath = "#{POSTS_DIR_RELATIVE}/#{today}-#{filename}.md"
+symlink_filepath = "#{POSTS_DIR_RELATIVE}/#{today}-#{filename}.md"
 
-File.symlink(File.path(symlinkFilepath), symlink)
+File.symlink(File.path(symlink_filepath), symlink)
 
 if options[:edit]
-    if not ENV['EDITOR']
-        puts 'No $EDITOR variable set'
-        exit
+    unless ENV['EDITOR']
+      puts 'No $EDITOR variable set'
+      exit
     end
     puts ENV['EDITOR']
     exec("#{ENV['EDITOR']} #{filename}")
