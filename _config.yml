@@ -50,6 +50,14 @@ redcarpet:
         'hardwrap'
     ]
 
+# Configuration for Solr index, the solr_indexing_project configuration can be used to index several different
+# documentations (general and specific docs) in one solr collection without interfering with each other
+# (defaults to 'default').
+solr_indexing_enabled: true
+solr_host: 'http://localhost:8983'
+solr_collection: collection1
+solr_indexing_project: jekyll-docs-template
+
 defaults:
   -
     scope:
