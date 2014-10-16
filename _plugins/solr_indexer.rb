@@ -10,7 +10,7 @@ module SolrIndex
       super(config)
       @solr_indexing_enabled = config['solr_indexing_enabled']
       unless @solr_indexing_enabled
-        exit
+        return
       end
       raise ArgumentError.new "Missing 'solr_host' configuration." unless config['solr_host']
       @solr_index_url = config['solr_host'].dup.concat('/solr')
@@ -24,7 +24,7 @@ module SolrIndex
     
     def generate(site)
       unless @solr_indexing_enabled
-        exit
+        return
       end
       solr = RSolr.connect :url => @solr_index_url
 
