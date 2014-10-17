@@ -1,16 +1,37 @@
-<ul class="nav nav-list">
-    <li><a href="{{ site.baseurl }}/">Home</a></li>
-    {% for section in site.sections %}
-        {% assign attr = section[0] %}
-        {% assign label = section[1] %}
+<div class="col-lg-3 col-md-3 col-sm-3">
+    <div class="sidebar-nav">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="visible-xs navbar-brand">Navigation</span>
+            </div>
+            <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                <ul class="nav nav-bar">
+                    <li class="nav-header"><a href="{{ site.baseurl }}/index.html">Home</a></li>
+                    {% for section in site.sections %}
+                    {% assign attr = section[0] %}
+                    {% assign label = section[1] %}
 
-        {% for page in site.categories[attr] %}
-            {% if forloop.first %}
-                <li class=nav-header>{{ label }}</li>
-            {% endif %}
-            <li data-order="{{ page.order }}"><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></li>
-        {% endfor %}
-    {% endfor %}
-<!-- List additional links. It is recommended to add a divider
-    e.g. <li class=divider></li> first to break up the content. -->
-</ul>
+                    {% for navpage in site.categories[attr] %}
+                    {% if forloop.first %}
+                    <li class=nav-header>{{ label }}</li>
+                    {% endif %}
+                    {% if page.url == navpage.url%}
+                    <li class="active" data-order="{{ navpage.order }}"><a href="#">{{ navpage.title }}</a></li>
+                    {% else %}
+                    <li data-order="{{ navpage.order }}"><a href="{{ site.baseurl }}{{ navpage.url }}">{{ navpage.title }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                    <!-- List additional links. It is recommended to add a divider
+                        e.g. <li class=divider></li> first to break up the content. -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

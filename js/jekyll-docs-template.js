@@ -47,8 +47,8 @@ function orderNav() {
 if (document.querySelectorAll) orderNav();
 
 function on_data(data) {
-    var searchresult = $('.searchresult');
-    searchresult.empty();
+    var searchresultItems = $('.searchresult-items');
+    searchresultItems.empty();
     var docs = data.response.docs;
     var highlighting = data.highlighting;
     $.each(docs, function(i, item) {
@@ -63,11 +63,11 @@ function on_data(data) {
             }
         });
         resultitem = resultitem + '</div>';
-        $('.searchresult').append(resultitem);
+        $('.searchresult-items').append(resultitem);
     });
 
     var total = 'Found ' + docs.length + ' results';
-    searchresult.prepend('<div class="found">' + total + '</div>');
+    searchresultItems.prepend('<div class="found">' + total + '</div>');
     $('.searchresult-panel-js').slideDown();
 }
 
@@ -96,7 +96,7 @@ function on_ready() {
     $('.panel-heading span.clickable').on("click", function (e) {
         // collapse the panel
         $(this).parents('.searchresult-panel-js').slideUp();
-        $('.searchresult').empty();
+        $('.searchresult-items').empty();
     });
 }
 $(document).ready(on_ready);
