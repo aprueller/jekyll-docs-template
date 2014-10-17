@@ -34,11 +34,11 @@ code {
     text-align: center;
 }
 
-#content > .page-header:first-child {
+.content > .page-header:first-child {
     margin-top: 0;
 }
 
-#content > .page-header:first-child h2 {
+.content > .page-header:first-child h2 {
     margin-top: 0;
 }
 
@@ -55,4 +55,32 @@ code {
 #navigation .nav-header {
     padding-left: 0;
     padding-right: 0;
+}
+
+.searchbox {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+.hidden {
+    display: none;
+}
+
+.searchresult-panel .panel-heading span {
+    font-size: 15px;
+    margin-top: -20px;
+}
+
+.searchresult .found {
+    font-style: italic;
+    margin-bottom: 1.25em;
+}
+
+.resultitem em {
+    background-color: lightskyblue;
+    font-style: normal;
+}
+
+.clickable {
+    cursor: pointer;
 }
