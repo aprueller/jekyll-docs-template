@@ -54,9 +54,8 @@ redcarpet:
 # documentations (general and specific docs) in one solr collection without interfering with each other
 # (defaults to 'default').
 solr_indexing_enabled: false
-solr_host: 'http://localhost:8983'
-solr_collection: collection1
-solr_indexing_project: jekyll-docs-template
+solr_indexing_baseurl: 'http://localhost:8983/solr/collection1'
+solr_query_baseurl: 'http://localhost:8983/solr/collection1'
 
 defaults:
   -

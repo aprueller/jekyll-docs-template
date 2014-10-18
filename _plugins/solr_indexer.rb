@@ -12,11 +12,8 @@ module SolrIndex
       unless @solr_indexing_enabled
         return
       end
-      raise ArgumentError.new "Missing 'solr_host' configuration." unless config['solr_host']
-      @solr_index_url = config['solr_host'].dup.concat('/solr')
-      unless config['solr_collection'].empty?
-        @solr_index_url = @solr_index_url.concat('/').concat(config['solr_collection'])
-      end
+      raise ArgumentError.new "Missing 'solr_indexing_baseurl' configuration." unless config['solr_indexing_baseurl']
+      @solr_index_url = config['solr_indexing_baseurl'].dup
       @solr_index_project = !(config['solr_indexing_project'] == nil || config['solr_indexing_project'].empty?) ? config['solr_indexing_project'] : 'default'
       baseurl_conf = config['baseurl']
       @baseurl = baseurl_conf != nil ? baseurl_conf : ''
