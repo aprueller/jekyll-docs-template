@@ -34,7 +34,7 @@ highlighter: pygments
 future: true
 
 # Exclude non-site files
-exclude: ['bin', 'README.md']
+exclude: ['bin', 'README.md', 'solr']
 
 # Use the redcarpet Markdown renderer
 markdown: redcarpet
