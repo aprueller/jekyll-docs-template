@@ -114,7 +114,9 @@ code {
 }
 
 .resultitem em {
-    background-color: lightskyblue;
+    background-color: #428bca;
+    color: #ffffff;
+    text-shadow: none;
     font-style: normal;
 }
 
