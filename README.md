@@ -12,10 +12,10 @@ This project is based on the great jekyll template provided by [Byron Ruth][1].
 ## Why a fork?
 The template by bruth focuses on easy handling with github pages. This has some drawbacks as you cannot 
 use any custom plugin.
-What I needed was a template for software documentation of bigger software projects. There also searchability
-was an important subject. Additionally the structure of the project and the tooling for easy documentation
-should be more advanced. Liking the simple and clean idea of bruth I took it as starting point and added 
-the missing features.
+What I needed was a template for software documentation of bigger software projects. Making the documentation
+easily searchable was also an important subject. Additionally the structure of the project and the tooling for 
+easy documentation should be more advanced. Liking the simple and clean idea of bruth I took it as starting 
+point and added the missing features.
 
 ## Documentation
 The full featured documentation you can find [here][3]. Of course it is created with this very template 
@@ -24,4 +24,4 @@ with the search feature in the near future.
 
 [1]: https://github.com/bruth/jekyll-docs-template/ "jekyll-docs-template by Byron Ruth"
 [2]: http://lucene.apache.org/solr/ "Apache Solr"
-[3]: http://aprueller.github.io/jekyll-docs-template "jekyll-docs-template documentation"
+[3]: http://aprueller.github.io/jekyll-software-documentation "documentation"
