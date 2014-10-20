@@ -24,4 +24,4 @@ with the search feature in the near future.
 
 [1]: https://github.com/bruth/jekyll-docs-template/ "jekyll-docs-template by Byron Ruth"
 [2]: http://lucene.apache.org/solr/ "Apache Solr"
-[3]: http://aprueller.github.io/jekyll-docs-template
+[3]: http://aprueller.github.io/jekyll-docs-template "jekyll-docs-template documentation"
