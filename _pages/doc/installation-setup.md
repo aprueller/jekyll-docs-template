@@ -1,0 +1,1 @@
+../../doc/_posts/2014-10-20-installation-setup.md

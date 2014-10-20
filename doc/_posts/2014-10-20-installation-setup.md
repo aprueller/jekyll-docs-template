@@ -8,6 +8,7 @@ tags: []
 ## Installation
 
 Choose one of these two methods to get an quickstart:
+
 * Fork the [Github repository][1] and clone it.
 * Download the [master][2] and unzip it.
  
