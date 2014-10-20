@@ -20,3 +20,5 @@ easily searchable was also an important subject. Additionally the structure of t
 easy documentation should be more advanced. Liking the simple and clean idea of bruth I took it as starting 
 point and added the missing features.
 
+[1]: https://github.com/bruth/jekyll-docs-template/ "jekyll-docs-template by Byron Ruth"
+[2]: http://lucene.apache.org/solr/ "Apache Solr"
