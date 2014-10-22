@@ -18,15 +18,8 @@
                     {% assign label = section[1] %}
                     {% assign hardlinks = section[2] %}
 
-                    {% if hardlinks != nil and hardlinks.size > 0 %}
-                    <li class="nav-header">{{ label }}</li>
-                    {% for hardlink in hardlinks %}
-                    <li><a href="{{ hardlink[1] }}">{{ hardlink[0] }}</a></li>
-                    {% endfor %}
-                    {% endif %}
-
                     {% for navpage in site.categories[attr] %}
-                    {% if forloop.first and (hardlinks == nil or hardlinks.size == 0) %}
+                    {% if forloop.first %}
                     <li class=nav-header>{{ label }}</li>
                     {% endif %}
                     {% if page.url == navpage.url%}
@@ -35,6 +28,16 @@
                     <li data-order="{{ navpage.order }}"><a href="{{ site.baseurl }}{{ navpage.url }}">{{ navpage.title }}</a></li>
                     {% endif %}
                     {% endfor %}
+
+                    {% if hardlinks != nil and hardlinks.size > 0 %}
+                    {% unless site.categories[attr] %}
+                    <li class="nav-header">{{ label }}</li>
+                    {% endunless %}
+                    {% for hardlink in hardlinks %}
+                    <li><a href="{{ hardlink[1] }}">{{ hardlink[0] }}</a></li>
+                    {% endfor %}
+                    {% endif %}
+
                     {% endfor %}
                     <!-- List additional links. It is recommended to add a divider
                         e.g. <li class=divider></li> first to break up the content. -->
