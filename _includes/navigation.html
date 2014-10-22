@@ -16,9 +16,17 @@
                     {% for section in site.sections %}
                     {% assign attr = section[0] %}
                     {% assign label = section[1] %}
+                    {% assign hardlinks = section[2] %}
+
+                    {% if hardlinks != nil and hardlinks.size > 0 %}
+                    <li class="navbar-header">{{ label }}</li>
+                    {% for hardlink in hardlinks %}
+                    <li><a href="{{ hardlink[1] }}">{{ hardlink[0] }}</a></li>
+                    {% endfor %}
+                    {% endif %}
 
                     {% for navpage in site.categories[attr] %}
-                    {% if forloop.first %}
+                    {% if forloop.first and (hardlinks == nil or hardlinks.size == 0) %}
                     <li class=nav-header>{{ label }}</li>
                     {% endif %}
                     {% if page.url == navpage.url%}
