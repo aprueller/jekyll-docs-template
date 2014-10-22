@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'rsolr'
+require 'digest'
 
 module SolrIndex
   class SolrIndexGenerator < Jekyll::Generator
@@ -37,10 +38,11 @@ module SolrIndex
 
         content = item.content.gsub(%r{</?[^>]+?>}, ' ')
         tags = item.data['tags'] || []
+        id = Digest::MD5.hexdigest(page_url + @solr_index_project)
 
         puts "Indexing #{page_url}"
 
-        solr.add :id=>page_url, :url_s=>page_url, :title_t=>item.data['title'], :category_txt=>item.data['category'], :text_t=>content, :tags_txt=>tags, :project_s=>@solr_index_project
+        solr.add :id=>id, :url_s=>page_url, :title_t=>item.data['title'], :category_txt=>item.data['category'], :text_t=>content, :tags_txt=>tags, :project_s=>@solr_index_project
         solr.commit
       end
     end
