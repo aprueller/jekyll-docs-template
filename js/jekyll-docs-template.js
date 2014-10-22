@@ -6,8 +6,8 @@ function orderNav() {
         lists = {},
         headers = {};
 
-    var navUl = document.querySelectorAll('#navigation ul')[0],
-        navLis = document.querySelectorAll('#navigation ul li');
+    var navUl = document.querySelectorAll('.navbar-order-js ul')[0],
+        navLis = document.querySelectorAll('.navbar-order-js ul li');
 
     if (!navUl) return;
 
@@ -29,8 +29,8 @@ function orderNav() {
         lists[section].push([order, li]);
     }
 
-    for (var i = 0; i < sections.length; i++) {
-        section = sections[i];
+    for (var k = 0; k < sections.length; k++) {
+        section = sections[k];
         list = lists[section].sort(function(a, b) {
             return a[0] - b[0];
         });
