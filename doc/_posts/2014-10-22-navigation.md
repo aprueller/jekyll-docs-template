@@ -30,7 +30,7 @@ the browser, the client is out of luck._
 ## Static Links
 
 You can also add static links to your navigation. Just add the information in the configuration yaml file inside 
-`section`.
+`sections`.
 
 ### Example
 ```yaml
