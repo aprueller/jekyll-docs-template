@@ -3,6 +3,7 @@ title: "Installation & Setup"
 category: doc
 date: 2014-10-20 20:19:00
 tags: []
+order: 1
 ---
 
 ## Installation
