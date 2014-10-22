@@ -25,3 +25,24 @@ deploying Jekyll sites to GitHub Pages is a common practice, we cannot rely on t
 plugins [since they are disabled][2]. 
 This solution relies on JavaScript to sort the navigation after it has been rendered, so if JavaScript is disabled on 
 the browser, the client is out of luck._
+
+
+## Static Links
+
+You can also add static links to your navigation. Just add the information in the configuration yaml file inside 
+`section`.
+
+### Example
+```yaml
+sections: [
+    ['doc', 'Documentation'],
+    ['tut', 'Tutorial'],
+    ['ref', 'Reference', [ 
+        ['External Link 1', 'http://some.link.com'],
+        ['External Link 2', 'https://some.other.link']
+    ]],
+    ['dev', 'Developers'],
+    ['post', 'Posts']
+]
+```
+A mix of external links and pages is possible - the pages will be displayed first, the external links afterwards.
