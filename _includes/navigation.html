@@ -34,7 +34,7 @@
                     <li class="nav-header">{{ label }}</li>
                     {% endunless %}
                     {% for hardlink in hardlinks %}
-                    <li><a href="{{ hardlink[1] }}">{{ hardlink[0] }}</a></li>
+                    <li><a href="{{ hardlink[0] }}">{{ hardlink[1] }}</a></li>
                     {% endfor %}
                     {% endif %}
 
