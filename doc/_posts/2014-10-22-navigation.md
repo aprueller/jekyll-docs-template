@@ -39,7 +39,7 @@ sections: [
     ['tut', 'Tutorial'],
     ['ref', 'Reference', [ 
         ['External Link 1', 'http://some.link.com'],
-        ['External Link 2', 'https://some.other.link']
+        [''External Link 2', https://some.other.link']
     ]],
     ['dev', 'Developers'],
     ['post', 'Posts']
